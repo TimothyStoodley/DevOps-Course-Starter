@@ -7,6 +7,7 @@
     <p class="lead">Just another to-do app.</p>
   </div>
 
+
 <div><form action='/add-item' method="POST">
   <label for="title">add item</label><br>
   <input type="text" id="item" name="item"><br><br>
@@ -18,7 +19,12 @@
       <h2>Items</h2>
       <ul class="list-group mb-4">
         {% for item in items %}
-        <li>{{item.id}} - {{item.status}} - {{item.title}}</li>
+        <li>{{item.id}} - {{item.status}} - {{item.title}}
+          <div><form action='/move-item' method="POST">
+            <input type="text" id="cardId" name="cardId" value="{{item.id}}" hidden>
+            <input type="submit" id="submit" name="submit" value="move to Done">
+          </form></div><br>
+        </li>
         {% endfor %}
         </ul>
     </div>
